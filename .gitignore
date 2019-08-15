@@ -1,0 +1,9 @@
+venv
+spm12
+.idea
+.vscode
+.ipynb_checkpoints
+__pycache__
+bids-starter-kit-master
+mat_cortical_layers
+*.mat
