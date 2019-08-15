@@ -1,6 +1,8 @@
-Python (FSL) pipeline:
-1.Change original name of subject folder to 'sub-XX'
-2.BIDS_Create.py
+Python (FSL) pipeline
+----------------------
+
+* Change original name of subject folder to 'sub-XX'
+* BIDS_Create.py
 
 option 1: FSL pipeline
 3.prep_bold.py
