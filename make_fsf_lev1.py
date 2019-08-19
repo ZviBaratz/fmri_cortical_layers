@@ -35,7 +35,7 @@ class FsfsFirstLevel:
             # YOU WILL NEED TO EDIT THIS TO GRAB sub001
             splitdir_sub = splitdir[-3]
             if os.path.isdir("{0}/{1}".format(output_path, splitdir_sub)) == False:
-                os.mkdir(r"{0}/{1}".format(output_path, splitdir_sub))
+                os.makedirs(r"{0}/{1}".format(output_path, splitdir_sub))
             prot_title = splitdir[-1]
             outdir = r"{0}/{1}/{2}".format(output_path, splitdir_sub, prot_title[3:-4])
             outdir = outdir.replace("C:", "/mnt/c")
@@ -45,13 +45,13 @@ class FsfsFirstLevel:
                 DOF = "BBR"
                 stand_DOF = "12"
                 TR = "1.5"
-                IMG_size = "18311040"
+                IMG_size = "382130452"
             elif "IR" in prot_title:
                 TE = "28"
                 DOF = "3"
                 stand_DOF = "3"
                 TR = "3"
-                IMG_size = "4577760"
+                IMG_size = "191065402"
             if "Motor" in prot_title:
                 Action = "Motor"
             elif "Sensory" in prot_title:
