@@ -17,14 +17,14 @@ class qa_lev1_analysis:
     f = open(outfile, "w")
     for file in list(all_feats):
       f.write("<p>============================================")
-      f.write("<p>%s"%(file))
-      f.write("<IMG SRC=\"%s/design.png\">"%(file))
-      f.write("<IMG SRC=\"%s/design_cov.png\" >"%(file))
-      f.write("<IMG SRC=\"%s/mc/disp.png\">"%(file))
+      f.write("<p>%s\n" % (file))
+      # f.write("<IMG SRC=\"%s/design_cov.png\" >"%(file))
+      f.write("<IMG SRC=\"%s/mc/disp.png\">\n" % (file))
       f.write("<IMG SRC=\"%s/mc/trans.png\" >"%(file))
       f.write("<p><IMG SRC=\"%s/reg/example_func2highres.png\" WIDTH=1200>"%(file))
       f.write("<p><IMG SRC=\"%s/reg/example_func2standard.png\" WIDTH=1200>"%(file))
       f.write("<p><IMG SRC=\"%s/reg/highres2standard.png\" WIDTH=1200>"%(file))
+      f.write("<IMG SRC=\"%s/rendered_thresh_zstat1.png\" WIDTH=1200>" % (file))
     f.close()
 
   def run(self):

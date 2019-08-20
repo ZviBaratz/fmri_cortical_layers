@@ -121,12 +121,12 @@ class RunBids:
         ##Renaming all func nii according to BIDS guidelines, ***please edit in order to match the template of your original dicom files***
 
     def rename_func_file(self, new_toplvl: str,subnum: str,dcmdir: str):
-        func_files = glob.glob('{0}/func/*[Gre|IR]*[Motor|Sensor|Sensory].*[!v]'.format(new_toplvl))
+        func_files = glob.glob('{0}/func/*[Gre|IR|SE]*[Motor|Sensor|Sensory].*[!v]'.format(new_toplvl))
         for file in func_files: #remove SBref files
             if 'Sensor' in file and 'Sensory' not in file:
                 fixed_f = file.replace('Sensor','Sensory')
                 os.rename(file,fixed_f)
-        func_files = glob.glob('{0}/func/*[Gre|IR]*[Motor|Sensory].*[!v]'.format(new_toplvl))
+        func_files = glob.glob('{0}/func/*[Gre|IR|SE]*[Motor|Sensory].*[!v]'.format(new_toplvl))
         for file in func_files:
             file_list = file.split('/')
             file_no_path = file_list[-1]

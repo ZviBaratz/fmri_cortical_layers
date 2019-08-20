@@ -21,7 +21,7 @@ class FsfsFirstLevel:
         # May want to make it a separate directory, because you can delete them all o
         #   once Feat runs
         self.fsfdir = r"{0}/scripts/fsfs".format(os.path.dirname(self.output_path))
-        self.subdirs = glob.glob(r"{0}/*/func/swrsub*.nii".format(self.path))
+        self.subdirs = glob.glob(r"{0}/*/func/sub*.nii".format(self.path))
 
     def create_fsfdir(self, fsfdir: str):
         if os.path.isdir(fsfdir) == False:
@@ -37,7 +37,7 @@ class FsfsFirstLevel:
             if os.path.isdir("{0}/{1}".format(output_path, splitdir_sub)) == False:
                 os.makedirs(r"{0}/{1}".format(output_path, splitdir_sub))
             prot_title = splitdir[-1]
-            outdir = r"{0}/{1}/{2}".format(output_path, splitdir_sub, prot_title[3:-4])
+            outdir = r"{0}/{1}/{2}".format(output_path, splitdir_sub, prot_title[:-4])
             outdir = outdir.replace("C:", "/mnt/c")
             outdir = outdir.replace(os.sep, "/")
             if "Gre" in prot_title:
@@ -45,13 +45,13 @@ class FsfsFirstLevel:
                 DOF = "BBR"
                 stand_DOF = "12"
                 TR = "1.5"
-                IMG_size = "382130452"
+                IMG_size = "18311040"
             elif "IR" in prot_title:
                 TE = "28"
-                DOF = "3"
-                stand_DOF = "3"
+                DOF = "7"
+                stand_DOF = "12"
                 TR = "3"
-                IMG_size = "191065402"
+                IMG_size = "4577760"
             if "Motor" in prot_title:
                 Action = "Motor"
             elif "Sensory" in prot_title:
@@ -107,13 +107,13 @@ class FsfsFirstLevel:
                 os.mkdir("{0}/lev1".format(fsfdir))
             with open("{0}/template_lev1.fsf".format(fsfdir)) as infile:
                 with open(
-                    "{0}/lev1/design_{1}.fsf".format(fsfdir, prot_title[3:-4]), "w"
+                        "{0}/lev1/design_{1}.fsf".format(fsfdir, prot_title[:-4]), "w"
                 ) as outfile:  # runnum
                     for line in infile:
                         for src, target in replacements.items():
                             line = line.replace(src, target)
                         outfile.write(line)
-            print('create fsf for {0}'.format(prot_title[3:-4]))
+            print('create fsf for {0}'.format(prot_title[:-4]))
 
     def run(self):
         self.create_fsfdir(fsfdir=self.fsfdir)
